@@ -1,0 +1,27 @@
+# Hooks de git (el equivalente a Husky + lint-staged en JS).
+# Se instalan una vez con:  uv run pre-commit install --hook-type pre-commit --hook-type pre-push
+#
+# Usamos hooks "local" que llaman a `uv run`, así se ejecuta la misma versión de ruff
+# y pytest que fija uv.lock, y no hay una segunda versión que mantener acá.
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check (lint)
+        entry: uv run ruff check --fix
+        language: system
+        types: [python]
+        stages: [pre-commit]
+      - id: ruff-format
+        name: ruff format
+        entry: uv run ruff format
+        language: system
+        types: [python]
+        stages: [pre-commit]
+      - id: pytest
+        name: pytest
+        entry: uv run pytest -q
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]
