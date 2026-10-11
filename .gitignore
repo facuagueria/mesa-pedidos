@@ -1,0 +1,21 @@
+# Entorno y secretos
+.venv/
+.env
+
+# Artefactos generados: índice FAISS y checkpoints de SQLite (se regeneran, no se versionan)
+artefactos/*
+!artefactos/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Editor y sistema
+.vscode/
+.idea/
+.DS_Store
