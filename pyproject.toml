@@ -1,0 +1,45 @@
+[project]
+name = "mesa-pedidos"
+version = "0.1.0"
+description = "Procesador de bandeja de pedidos con LangGraph: clasifica, responde con RAG, valida contra datos reales y frena para aprobación humana."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    # LLM y orquestación (Clases 3, 6 y 7)
+    "langchain>=1.0",
+    "langchain-google-genai>=4.4",
+    "langchain-community>=0.4",
+    "langgraph>=1.0",
+    "langgraph-checkpoint-sqlite>=3.0",
+    # RAG: lectura de PDF, índice vectorial y BM25 (Clases 4 y 5)
+    "langchain-text-splitters>=1.0",
+    "pypdf>=5.0",
+    "faiss-cpu>=1.9",
+    "rank-bm25>=0.2.2",
+    # Validación y configuración
+    "pydantic>=2.9",
+    "python-dotenv>=1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["mesa_pedidos"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
