@@ -43,3 +43,6 @@ select = ["E", "F", "I", "UP", "B"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# langchain-community avisa que se va a discontinuar, pero FAISS todavía no tiene
+# un paquete propio usable. Silenciamos solo ese aviso, no los demás.
+filterwarnings = ["ignore:`langchain-community` is being sunset:DeprecationWarning"]
