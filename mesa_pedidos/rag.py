@@ -12,7 +12,6 @@ from langchain_core.documents import Document
 from langchain_core.language_models import BaseChatModel
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.retrievers import BaseRetriever
-from langchain_deepseek import ChatDeepSeek
 from langchain_google_genai import ChatGoogleGenerativeAI
 from pydantic import BaseModel, Field
 
@@ -86,30 +85,14 @@ def filtrar_citas(respuesta: RespuestaConsulta, chunks: list[Document]) -> Respu
 
 
 def crear_llm() -> BaseChatModel:
-    """El LLM según MODELO_LLM: si empieza con "deepseek" usa DeepSeek, si no, Gemini.
-
-    El resto del código no se entera del cambio: todos los chat models de LangChain
-    tienen la misma interfaz (`invoke`, `with_structured_output`). Los embeddings
-    siguen siendo de Gemini, así que el índice no se toca.
-    """
-    # Temperatura 0: es una respuesta factual, queremos la salida más estable (Clase 1).
-    # timeout y pocos reintentos propios: si el modelo no responde, preferimos un error
+    # Sin temperature: desde gemini-3.6-flash y 3.5-flash-lite Google la deja fija y
+    # la ignora (con un warning en cada llamada si se la pasamos).
+    # timeout y pocos reintentos propios: si Gemini no responde, preferimos un error
     # visible a un proceso colgado. Los reintentos por cuota los maneja el grafo.
-    if config.MODELO_LLM.startswith("deepseek"):
-        # Lee la clave de DEEPSEEK_API_KEY. El modo "thinking" viene prendido y no acepta
-        # forzar una tool, que es como LangChain pide el structured output: lo apagamos.
-        return ChatDeepSeek(
-            model=config.MODELO_LLM,
-            temperature=0,
-            timeout=45,
-            max_retries=1,
-            extra_body={"thinking": {"type": "disabled"}},
-        )
     # reasoning_effort="low": clasificar, extraer y responder con contexto no necesitan
     # pensar mucho, y así cada llamada tarda y gasta menos.
     return ChatGoogleGenerativeAI(
         model=config.MODELO_LLM,
-        temperature=0,
         timeout=45,
         max_retries=1,
         reasoning_effort="low",
