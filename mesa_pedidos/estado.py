@@ -21,11 +21,13 @@ class Clasificacion(BaseModel):
 
     intencion: Literal["consulta", "pedido", "derivar"] = Field(
         description=(
-            "consulta: pregunta algo que se responde con las políticas de la empresa "
-            "(precios, fletes, plazos, garantías, devoluciones, productos). "
-            "pedido: quiere comprar productos concretos. "
-            "derivar: reclamos por entregas o facturas, propuestas comerciales, pedidos "
-            "de asesoramiento o llamado, o cualquier cosa que necesite a una persona."
+            "consulta: pregunta general que se responde con las políticas de la empresa "
+            "(precios, fletes, plazos, garantías, devoluciones, impuestos y percepciones, "
+            "productos), aunque la respuesta sea que no. "
+            "pedido: quiere comprar productos concretos, con códigos o cantidades, aunque "
+            "pida condiciones especiales (descuentos, plazos): eso lo valida el sistema. "
+            "derivar: solo reclamos por una entrega o factura puntual, propuestas de "
+            "proveedores, o pedidos de asesoramiento o llamado sin productos definidos."
         )
     )
     motivo: str = Field(description="En una oración, por qué se eligió esa intención")
