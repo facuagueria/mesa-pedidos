@@ -28,5 +28,5 @@ DIR_INDICE = DIR_ARTEFACTOS / "indice_faiss"
 CHECKPOINTS_DB = DIR_ARTEFACTOS / "checkpoints.sqlite"
 
 # Modelos
-MODELO_LLM = os.getenv("MODELO_LLM", "gemini-3.6-flash")
+MODELO_LLM = os.getenv("MODELO_LLM", "gemini-3.5-flash-lite")
 MODELO_EMBEDDINGS = os.getenv("MODELO_EMBEDDINGS", "gemini-embedding-001")
