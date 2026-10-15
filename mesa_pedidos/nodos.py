@@ -99,6 +99,8 @@ def responder_consulta(estado: EstadoPedido, llm: BaseChatModel, retriever: Base
         retriever=retriever,
         llm=llm,
         datos_cliente=describir_cliente(estado.get("cliente")),
+        # Sin la fecha, "¿sigue valiendo el presupuesto del 10/9?" no tiene respuesta
+        fecha=estado["mensaje"].get("fecha", "No informada."),
     )
     citas = ", ".join(f"{c.documento} pág. {c.pagina}" for c in respuesta.citas) or "sin citas"
     return {
