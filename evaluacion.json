@@ -1,0 +1,897 @@
+{
+  "fecha": "2026-10-16T19:25:42",
+  "modelo_llm": "gemini-3.5-flash-lite",
+  "modelo_embeddings": "gemini-embedding-001",
+  "retriever": "hibrido",
+  "metricas": {
+    "casos_evaluados": 20,
+    "casos_con_error": 0,
+    "ruta_correcta": 20,
+    "intencion_correcta": 20,
+    "consultas_evaluadas": 8,
+    "consultas_con_dato_clave": 8,
+    "consultas_con_documento_citado": 8,
+    "items_precision_promedio": 1.0,
+    "items_recall_promedio": 1.0
+  },
+  "casos": [
+    {
+      "id": "MSG-001",
+      "esperado": {
+        "id": "MSG-001",
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "documento": "condiciones_comerciales_2026.pdf",
+        "debe_contener": [
+          "5%",
+          "1.500.000"
+        ]
+      },
+      "obtenido": {
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "respuesta": "Para un pedido de $1.200.000 netos te corresponde un 5% de descuento por volumen. El flete no se bonifica ya que no supera el monto mínimo de $1.500.000, por lo que debés abonarlo aparte.",
+        "citas": [
+          {
+            "documento": "condiciones_comerciales_2026.pdf",
+            "pagina": 1
+          },
+          {
+            "documento": "logistica_fletes_2026.pdf",
+            "pagina": 1
+          }
+        ],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Ferreteria El Tornillo Feliz S.R.L.",
+          "clasificar: consulta (El cliente pregunta sobre descuentos por volumen y condiciones de flete para un monto determinado.)",
+          "responder_consulta: condiciones_comerciales_2026.pdf pág. 1, logistica_fletes_2026.pdf pág. 1"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "dato_clave_ok": true,
+        "datos_faltantes": [],
+        "documento_ok": true
+      }
+    },
+    {
+      "id": "MSG-002",
+      "esperado": {
+        "id": "MSG-002",
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "documento": "logistica_fletes_2026.pdf",
+        "debe_contener": [
+          "175.000",
+          "8"
+        ]
+      },
+      "obtenido": {
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "respuesta": "Para los envíos a Neuquén capital (Zona 5), el costo del flete es de $175.000 por envío y el plazo de entrega es de 8 a 12 días hábiles.",
+        "citas": [
+          {
+            "documento": "logistica_fletes_2026.pdf",
+            "pagina": 1
+          }
+        ],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Talleres Patagonia S.A.",
+          "clasificar: consulta (El cliente pregunta sobre los plazos y costos de envío a Neuquén para programar una parada de planta, lo cual corresponde a una consulta general sobre fletes.)",
+          "responder_consulta: logistica_fletes_2026.pdf pág. 1"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "dato_clave_ok": true,
+        "datos_faltantes": [],
+        "documento_ok": true
+      }
+    },
+    {
+      "id": "MSG-003",
+      "esperado": {
+        "id": "MSG-003",
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "documento": "politica_devoluciones_2026.pdf",
+        "debe_contener": [
+          "no"
+        ]
+      },
+      "obtenido": {
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "respuesta": "No se aceptan devoluciones por arrepentimiento de elementos de protección personal de uso individual, como los zapatos de seguridad, por razones de higiene.",
+        "citas": [
+          {
+            "documento": "politica_devoluciones_2026.pdf",
+            "pagina": 1
+          }
+        ],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Roberto Gimenez Herramientas",
+          "clasificar: consulta (El cliente pregunta sobre las políticas de devolución de la empresa debido a un error de talle en una compra anterior.)",
+          "responder_consulta: politica_devoluciones_2026.pdf pág. 1"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "dato_clave_ok": true,
+        "datos_faltantes": [],
+        "documento_ok": true
+      }
+    },
+    {
+      "id": "MSG-004",
+      "esperado": {
+        "id": "MSG-004",
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "documento": "fichas_tecnicas_2026.pdf",
+        "debe_contener": [
+          "HE-4335"
+        ]
+      },
+      "obtenido": {
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "respuesta": "El atornillador de impacto SKU HE-4330 se vende sin batería ni cargador. El código de la batería compatible es el SKU HE-4335.",
+        "citas": [
+          {
+            "documento": "fichas_tecnicas_2026.pdf",
+            "pagina": 1
+          }
+        ],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Metalurgica San Jorge S.A.",
+          "clasificar: consulta (El cliente realiza una pregunta general sobre las características de un producto y la compatibilidad de sus accesorios.)",
+          "responder_consulta: fichas_tecnicas_2026.pdf pág. 1"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "dato_clave_ok": true,
+        "datos_faltantes": [],
+        "documento_ok": true
+      }
+    },
+    {
+      "id": "MSG-005",
+      "esperado": {
+        "id": "MSG-005",
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "documento": "condiciones_comerciales_2026.pdf",
+        "debe_contener": [
+          "5"
+        ]
+      },
+      "obtenido": {
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "respuesta": "El presupuesto que le pasamos el 10 de septiembre ya caducó, ya que los presupuestos emitidos por la Mesa de Pedidos mantienen su precio por 5 días hábiles.",
+        "citas": [
+          {
+            "documento": "condiciones_comerciales_2026.pdf",
+            "pagina": 1
+          }
+        ],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Distribuidora Cuyo Insumos S.A.",
+          "clasificar: consulta (El cliente pregunta sobre la validez de un presupuesto anterior, lo cual corresponde a una consulta sobre precios y políticas comerciales.)",
+          "responder_consulta: condiciones_comerciales_2026.pdf pág. 1"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "dato_clave_ok": true,
+        "datos_faltantes": [],
+        "documento_ok": true
+      }
+    },
+    {
+      "id": "MSG-006",
+      "esperado": {
+        "id": "MSG-006",
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "documento": "politica_devoluciones_2026.pdf",
+        "debe_contener": [
+          "12 meses"
+        ]
+      },
+      "obtenido": {
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "respuesta": "Las amoladoras cuentan con una garantía de 12 meses de fábrica contados desde la fecha de factura. Como la herramienta tiene 8 meses, está dentro del plazo de cobertura. La gestión se realiza en el service oficial de la marca, actuando Ferretería Industrial Andina como gestor. Tené en cuenta que el flete de retorno queda a cargo del cliente, y la garantía no cubre desgaste normal de piezas consumibles como los discos.",
+        "citas": [
+          {
+            "documento": "politica_devoluciones_2026.pdf",
+            "pagina": 1
+          }
+        ],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Cooperativa de Trabajo Sur Ltda.",
+          "clasificar: consulta (El cliente pregunta sobre la cobertura de la garantía y el trámite correspondiente para un producto adquirido.)",
+          "responder_consulta: politica_devoluciones_2026.pdf pág. 1"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "dato_clave_ok": true,
+        "datos_faltantes": [],
+        "documento_ok": true
+      }
+    },
+    {
+      "id": "MSG-007",
+      "esperado": {
+        "id": "MSG-007",
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "documento": "logistica_fletes_2026.pdf",
+        "debe_contener": [
+          "24"
+        ]
+      },
+      "obtenido": {
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "respuesta": "Para los envíos a Santa Rosa (Zona 3), los aerosoles y químicos inflamables no tienen el límite de 24 unidades que sí aplica para las zonas 4 y 5.",
+        "citas": [
+          {
+            "documento": "logistica_fletes_2026.pdf",
+            "pagina": 1
+          }
+        ],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Agro Servicios Pampa S.A.",
+          "clasificar: consulta (El cliente pregunta sobre las restricciones de envío y límites de cantidad para un producto inflamable (aerosoles WD-40).)",
+          "responder_consulta: logistica_fletes_2026.pdf pág. 1"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "dato_clave_ok": true,
+        "datos_faltantes": [],
+        "documento_ok": true
+      }
+    },
+    {
+      "id": "MSG-008",
+      "esperado": {
+        "id": "MSG-008",
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "documento": "condiciones_comerciales_2026.pdf",
+        "debe_contener": [
+          "no"
+        ]
+      },
+      "obtenido": {
+        "intencion": "consulta",
+        "ruta": "responder_consulta",
+        "respuesta": "Los clientes inscriptos en Córdoba no sufren percepción de Ingresos Brutos, por lo que no les corresponde dicho recargo.",
+        "citas": [
+          {
+            "documento": "condiciones_comerciales_2026.pdf",
+            "pagina": 2
+          }
+        ],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Ferreteria El Tornillo Feliz S.R.L.",
+          "clasificar: consulta (El cliente realiza una pregunta general sobre la aplicación de percepciones de Ingresos Brutos en la facturación.)",
+          "responder_consulta: condiciones_comerciales_2026.pdf pág. 2"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "dato_clave_ok": true,
+        "datos_faltantes": [],
+        "documento_ok": true
+      }
+    },
+    {
+      "id": "MSG-009",
+      "esperado": {
+        "id": "MSG-009",
+        "intencion": "pedido",
+        "ruta": "confirmar_pedido",
+        "items": [
+          {
+            "sku": "AB-1020",
+            "cantidad": 200
+          },
+          {
+            "sku": "AB-1120",
+            "cantidad": 50
+          },
+          {
+            "sku": "ME-6030",
+            "cantidad": 10
+          }
+        ],
+        "motivo": "dentro del limite de credito y sin descuento extraordinario"
+      },
+      "obtenido": {
+        "intencion": "pedido",
+        "ruta": "confirmar_pedido",
+        "respuesta": null,
+        "citas": [],
+        "items": [
+          {
+            "sku": "AB-1020",
+            "cantidad": 200
+          },
+          {
+            "sku": "AB-1120",
+            "cantidad": 50
+          },
+          {
+            "sku": "ME-6030",
+            "cantidad": 10
+          }
+        ],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Ferreteria El Tornillo Feliz S.R.L.",
+          "clasificar: pedido (El cliente solicita la compra de productos concretos especificando códigos y cantidades.)",
+          "extraer_pedido: 200 x AB-1020, 50 x AB-1120, 10 x ME-6030",
+          "validar_pedido: confirmar, neto $927.940, 0 alertas",
+          "confirmar_pedido: total $1.122.807"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "items_precision": 1.0,
+        "items_recall": 1.0
+      }
+    },
+    {
+      "id": "MSG-010",
+      "esperado": {
+        "id": "MSG-010",
+        "intencion": "pedido",
+        "ruta": "confirmar_pedido",
+        "items": [
+          {
+            "sku": "HE-4110",
+            "cantidad": 4
+          },
+          {
+            "sku": "HE-4500",
+            "cantidad": 2
+          },
+          {
+            "sku": "SE-5010",
+            "cantidad": 30
+          },
+          {
+            "sku": "SE-5055",
+            "cantidad": 100
+          }
+        ],
+        "motivo": "cliente A al dia, saldo + pedido por debajo del limite"
+      },
+      "obtenido": {
+        "intencion": "pedido",
+        "ruta": "confirmar_pedido",
+        "respuesta": null,
+        "citas": [],
+        "items": [
+          {
+            "sku": "HE-4110",
+            "cantidad": 4
+          },
+          {
+            "sku": "HE-4500",
+            "cantidad": 2
+          },
+          {
+            "sku": "SE-5010",
+            "cantidad": 30
+          },
+          {
+            "sku": "SE-5055",
+            "cantidad": 100
+          }
+        ],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Talleres Patagonia S.A.",
+          "clasificar: pedido (El cliente solicita comprar productos concretos con códigos y cantidades específicas para una parada.)",
+          "extraer_pedido: 4 x HE-4110, 2 x HE-4500, 30 x SE-5010, 100 x SE-5055",
+          "validar_pedido: confirmar, neto $3.316.200, 0 alertas",
+          "confirmar_pedido: total $4.012.602"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "items_precision": 1.0,
+        "items_recall": 1.0
+      }
+    },
+    {
+      "id": "MSG-011",
+      "esperado": {
+        "id": "MSG-011",
+        "intencion": "pedido",
+        "ruta": "confirmar_pedido",
+        "items": [
+          {
+            "sku": "SE-5025",
+            "cantidad": 20
+          },
+          {
+            "sku": "ME-6030",
+            "cantidad": 15
+          }
+        ],
+        "motivo": "monotributista con pago anticipado; no consume credito"
+      },
+      "obtenido": {
+        "intencion": "pedido",
+        "ruta": "confirmar_pedido",
+        "respuesta": null,
+        "citas": [],
+        "items": [
+          {
+            "sku": "SE-5025",
+            "cantidad": 20
+          },
+          {
+            "sku": "ME-6030",
+            "cantidad": 15
+          }
+        ],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Marcelo Paz Ferreteria",
+          "clasificar: pedido (El cliente solicita comprar productos concretos indicando códigos y cantidades específicas.)",
+          "extraer_pedido: 20 x SE-5025, 15 x ME-6030",
+          "validar_pedido: confirmar, neto $323.000, 0 alertas",
+          "confirmar_pedido: total $390.830"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "items_precision": 1.0,
+        "items_recall": 1.0
+      }
+    },
+    {
+      "id": "MSG-012",
+      "esperado": {
+        "id": "MSG-012",
+        "intencion": "pedido",
+        "ruta": "confirmar_pedido",
+        "items": [
+          {
+            "sku": "LU-8010",
+            "cantidad": 6
+          },
+          {
+            "sku": "LU-8090",
+            "cantidad": 10
+          },
+          {
+            "sku": "FI-7075",
+            "cantidad": 2
+          }
+        ],
+        "motivo": "cliente B al dia, monto chico"
+      },
+      "obtenido": {
+        "intencion": "pedido",
+        "ruta": "confirmar_pedido",
+        "respuesta": null,
+        "citas": [],
+        "items": [
+          {
+            "sku": "LU-8010",
+            "cantidad": 6
+          },
+          {
+            "sku": "LU-8090",
+            "cantidad": 10
+          },
+          {
+            "sku": "FI-7075",
+            "cantidad": 2
+          }
+        ],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Agro Servicios Pampa S.A.",
+          "clasificar: pedido (El cliente solicita comprar productos concretos indicando códigos y cantidades específicas.)",
+          "extraer_pedido: 6 x LU-8010, 10 x LU-8090, 2 x FI-7075",
+          "validar_pedido: confirmar, neto $1.055.310, 0 alertas",
+          "confirmar_pedido: total $1.276.925"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "items_precision": 1.0,
+        "items_recall": 1.0
+      }
+    },
+    {
+      "id": "MSG-013",
+      "esperado": {
+        "id": "MSG-013",
+        "intencion": "pedido",
+        "ruta": "aprobacion_humana",
+        "items": [
+          {
+            "sku": "HE-4180",
+            "cantidad": 3
+          },
+          {
+            "sku": "NE-9010",
+            "cantidad": 1
+          },
+          {
+            "sku": "NE-9055",
+            "cantidad": 4
+          }
+        ],
+        "motivo": "saldo 7.450.000 + pedido supera el limite de credito de 9.000.000"
+      },
+      "obtenido": {
+        "intencion": "pedido",
+        "ruta": "aprobacion_humana",
+        "respuesta": null,
+        "citas": [],
+        "items": [
+          {
+            "sku": "HE-4180",
+            "cantidad": 3
+          },
+          {
+            "sku": "NE-9010",
+            "cantidad": 1
+          },
+          {
+            "sku": "NE-9055",
+            "cantidad": 4
+          }
+        ],
+        "alertas": [
+          "El neto $2.771.000 supera el crédito disponible $1.550.000."
+        ],
+        "log": [
+          "cargar_cliente: Metalurgica San Jorge S.A.",
+          "clasificar: pedido (El cliente solicita comprar productos concretos con códigos y cantidades específicas.)",
+          "extraer_pedido: 3 x HE-4180, 1 x NE-9010, 4 x NE-9055",
+          "validar_pedido: humano, neto $2.771.000, 1 alertas"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "items_precision": 1.0,
+        "items_recall": 1.0
+      }
+    },
+    {
+      "id": "MSG-014",
+      "esperado": {
+        "id": "MSG-014",
+        "intencion": "pedido",
+        "ruta": "aprobacion_humana",
+        "items": [
+          {
+            "sku": "SU-3041",
+            "cantidad": 2
+          },
+          {
+            "sku": "SU-3150",
+            "cantidad": 20
+          }
+        ],
+        "motivo": "saldo 2.410.000 sobre limite 2.500.000: cualquier pedido lo supera"
+      },
+      "obtenido": {
+        "intencion": "pedido",
+        "ruta": "aprobacion_humana",
+        "respuesta": null,
+        "citas": [],
+        "items": [
+          {
+            "sku": "SU-3041",
+            "cantidad": 2
+          },
+          {
+            "sku": "SU-3150",
+            "cantidad": 20
+          }
+        ],
+        "alertas": [
+          "El neto $930.900 supera el crédito disponible $90.000."
+        ],
+        "log": [
+          "cargar_cliente: Insumos del Litoral S.R.L.",
+          "clasificar: pedido (El cliente solicita comprar productos concretos indicando códigos y cantidades, aunque incluya una condición de pago.)",
+          "extraer_pedido: 2 x SU-3041, 20 x SU-3150",
+          "validar_pedido: humano, neto $930.900, 1 alertas"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "items_precision": 1.0,
+        "items_recall": 1.0
+      }
+    },
+    {
+      "id": "MSG-015",
+      "esperado": {
+        "id": "MSG-015",
+        "intencion": "pedido",
+        "ruta": "aprobacion_humana",
+        "items": [
+          {
+            "sku": "ME-6080",
+            "cantidad": 5
+          },
+          {
+            "sku": "HE-4410",
+            "cantidad": 8
+          }
+        ],
+        "motivo": "cliente con 38 dias de mora: entre 30 y 60 exige autorizacion (art. 7)"
+      },
+      "obtenido": {
+        "intencion": "pedido",
+        "ruta": "aprobacion_humana",
+        "respuesta": null,
+        "citas": [],
+        "items": [
+          {
+            "sku": "ME-6080",
+            "cantidad": 5
+          },
+          {
+            "sku": "HE-4410",
+            "cantidad": 8
+          }
+        ],
+        "alertas": [
+          "El neto $5.018.200 supera el crédito disponible $110.000.",
+          "38 días de mora: todo pedido requiere autorización."
+        ],
+        "log": [
+          "cargar_cliente: Construcciones Del Valle S.R.L.",
+          "clasificar: pedido (El cliente solicita comprar productos concretos indicando códigos y cantidades específicas.)",
+          "extraer_pedido: 5 x ME-6080, 8 x HE-4410",
+          "validar_pedido: humano, neto $5.018.200, 2 alertas"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "items_precision": 1.0,
+        "items_recall": 1.0
+      }
+    },
+    {
+      "id": "MSG-016",
+      "esperado": {
+        "id": "MSG-016",
+        "intencion": "pedido",
+        "ruta": "aprobacion_humana",
+        "items": [
+          {
+            "sku": "AB-1035",
+            "cantidad": 500
+          },
+          {
+            "sku": "AB-1120",
+            "cantidad": 300
+          },
+          {
+            "sku": "HE-4110",
+            "cantidad": 60
+          }
+        ],
+        "motivo": "triple alerta: pide 25% de descuento (tope 20%, art. 5), no hay stock de HE-4110 (piden 60, hay 52) y el pedido supera el limite de credito"
+      },
+      "obtenido": {
+        "intencion": "pedido",
+        "ruta": "aprobacion_humana",
+        "respuesta": null,
+        "citas": [],
+        "items": [
+          {
+            "sku": "AB-1035",
+            "cantidad": 500
+          },
+          {
+            "sku": "AB-1120",
+            "cantidad": 300
+          },
+          {
+            "sku": "HE-4110",
+            "cantidad": 60
+          }
+        ],
+        "alertas": [
+          "Stock insuficiente de HE-4110: pide 60, hay 52.",
+          "Pide 25% de descuento y el tope es 15%: lo autoriza Gerencia.",
+          "El neto $18.731.000 supera el crédito disponible $2.300.000."
+        ],
+        "log": [
+          "cargar_cliente: Distribuidora Cuyo Insumos S.A.",
+          "clasificar: pedido (El cliente solicita comprar productos concretos con códigos y cantidades especificadas, incluyendo una solicitud de descuento que el sistema debe validar.)",
+          "extraer_pedido: 500 x AB-1035, 300 x AB-1120, 60 x HE-4110",
+          "validar_pedido: humano, neto $18.731.000, 3 alertas"
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "items_precision": 1.0,
+        "items_recall": 1.0
+      }
+    },
+    {
+      "id": "MSG-017",
+      "esperado": {
+        "id": "MSG-017",
+        "intencion": "pedido",
+        "ruta": "rechazar_pedido",
+        "items": [
+          {
+            "sku": "SE-5090",
+            "cantidad": 10
+          },
+          {
+            "sku": "SU-3200",
+            "cantidad": 20
+          }
+        ],
+        "motivo": "cliente suspendido con 95 dias de mora: no se toma pedido en cuenta corriente (art. 7)"
+      },
+      "obtenido": {
+        "intencion": "pedido",
+        "ruta": "rechazar_pedido",
+        "respuesta": null,
+        "citas": [],
+        "items": [
+          {
+            "sku": "SE-5090",
+            "cantidad": 10
+          },
+          {
+            "sku": "SU-3200",
+            "cantidad": 20
+          }
+        ],
+        "alertas": [
+          "Cliente suspendido con 95 días de mora: no se le toman pedidos en cuenta corriente, solo con pago anticipado."
+        ],
+        "log": [
+          "cargar_cliente: Industrias Norte Grande S.R.L.",
+          "clasificar: pedido (El cliente solicita comprar productos concretos indicando códigos y cantidades, aunque mencione condiciones de pago.)",
+          "extraer_pedido: 10 x SE-5090, 20 x SU-3200",
+          "validar_pedido: rechazar, neto $2.121.060, 1 alertas",
+          "rechazar_pedido: Cliente suspendido con 95 días de mora: no se le toman pedidos en cuenta corriente, solo con pago anticipado."
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true,
+        "items_precision": 1.0,
+        "items_recall": 1.0
+      }
+    },
+    {
+      "id": "MSG-018",
+      "esperado": {
+        "id": "MSG-018",
+        "intencion": "derivar",
+        "ruta": "derivar_humano",
+        "motivo": "reclamo por faltante con remito: no es consulta de politica ni pedido nuevo"
+      },
+      "obtenido": {
+        "intencion": "derivar",
+        "ruta": "derivar_humano",
+        "respuesta": null,
+        "citas": [],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Ferreteria El Tornillo Feliz S.R.L.",
+          "clasificar: derivar (El cliente realiza un reclamo por una entrega puntual faltante y solicita nota de crédito o reenvío.)",
+          "derivar_humano: El cliente realiza un reclamo por una entrega puntual faltante y solicita nota de crédito o reenvío."
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true
+      }
+    },
+    {
+      "id": "MSG-019",
+      "esperado": {
+        "id": "MSG-019",
+        "intencion": "derivar",
+        "ruta": "derivar_humano",
+        "motivo": "oferta de un proveedor, no es un cliente comprando"
+      },
+      "obtenido": {
+        "intencion": "derivar",
+        "ruta": "derivar_humano",
+        "respuesta": null,
+        "citas": [],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Mantenimiento Integral Litoral S.R.L.",
+          "clasificar: derivar (El cliente es un proveedor que ofrece productos y busca establecer contacto comercial.)",
+          "derivar_humano: El cliente es un proveedor que ofrece productos y busca establecer contacto comercial."
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true
+      }
+    },
+    {
+      "id": "MSG-020",
+      "esperado": {
+        "id": "MSG-020",
+        "intencion": "derivar",
+        "ruta": "derivar_humano",
+        "motivo": "pide asesoramiento tecnico sin producto definido; no hay SKU que extraer"
+      },
+      "obtenido": {
+        "intencion": "derivar",
+        "ruta": "derivar_humano",
+        "respuesta": null,
+        "citas": [],
+        "items": [],
+        "alertas": [],
+        "log": [
+          "cargar_cliente: Roberto Gimenez Herramientas",
+          "clasificar: derivar (El cliente solicita asesoramiento y una llamada telefónica para definir qué producto comprar, sin especificar códigos ni cantidades.)",
+          "derivar_humano: El cliente solicita asesoramiento y una llamada telefónica para definir qué producto comprar, sin especificar códigos ni cantidades."
+        ]
+      },
+      "comparacion": {
+        "intencion_ok": true,
+        "ruta_ok": true
+      }
+    }
+  ]
+}
