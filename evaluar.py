@@ -158,7 +158,7 @@ def main() -> None:
         "fecha": datetime.now().isoformat(timespec="seconds"),
         "modelo_llm": config.MODELO_LLM,
         "modelo_embeddings": config.MODELO_EMBEDDINGS,
-        "retriever": "denso",
+        "retriever": config.RETRIEVER,
         "metricas": metricas,
         "casos": casos,
     }

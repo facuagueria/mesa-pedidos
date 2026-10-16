@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field
 
 from mesa_pedidos import config
 from mesa_pedidos.indexado import cargar_indice
+from mesa_pedidos.retriever import crear_retriever_hibrido
 
 # Cuántos chunks se le pasan al LLM. Con uno solo es fácil quedarse sin el dato
 # (Clase 4, "errores frecuentes"); con muchos aparece el "lost in the middle".
@@ -117,7 +118,9 @@ def crear_llm() -> BaseChatModel:
 
 
 def crear_retriever() -> BaseRetriever:
-    return cargar_indice().as_retriever(search_kwargs={"k": CANTIDAD_CHUNKS})
+    if config.RETRIEVER == "denso":
+        return cargar_indice().as_retriever(search_kwargs={"k": CANTIDAD_CHUNKS})
+    return crear_retriever_hibrido(CANTIDAD_CHUNKS)
 
 
 def responder_pregunta(

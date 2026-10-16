@@ -30,3 +30,7 @@ CHECKPOINTS_DB = DIR_ARTEFACTOS / "checkpoints.sqlite"
 # Modelos
 MODELO_LLM = os.getenv("MODELO_LLM", "gemini-3.5-flash-lite")
 MODELO_EMBEDDINGS = os.getenv("MODELO_EMBEDDINGS", "gemini-embedding-001")
+
+# Retriever: "hibrido" (BM25 + denso, Clase 5) o "denso" (solo FAISS). Se puede
+# cambiar para comparar las dos configuraciones con evaluar.py.
+RETRIEVER = os.getenv("RETRIEVER", "hibrido")
